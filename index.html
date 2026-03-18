@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EquityLens Analyst Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">EquityLens</p>
+          <h1>Analyst-grade financial health analysis for stock decisions.</h1>
+          <p class="hero-copy">
+            Enter a company name to review profitability, balance-sheet strength,
+            cash generation, valuation context, strategic risks, and a Buy / Hold / Sell signal
+            presented like an institutional equity research note.
+          </p>
+        </div>
+        <div class="hero-panel">
+          <div class="hero-chip">8 companies preloaded</div>
+          <ul>
+            <li>Executive summary with recommendation</li>
+            <li>Financial strength scoring across 6 factors</li>
+            <li>Analyst narrative, catalysts, and risks</li>
+          </ul>
+        </div>
+      </header>
+
+      <main>
+        <section class="search-card card">
+          <form id="analysis-form" class="search-form">
+            <label for="company-input">Company name</label>
+            <div class="search-row">
+              <input
+                id="company-input"
+                name="company"
+                type="text"
+                placeholder="Try Apple, Microsoft, Nvidia, Tesla..."
+                autocomplete="off"
+              />
+              <button type="submit">Analyze stock</button>
+            </div>
+            <p class="helper-text">
+              Examples: Apple, Microsoft, Nvidia, Alphabet, Amazon, Meta, Tesla, JPMorgan.
+            </p>
+          </form>
+        </section>
+
+        <section id="empty-state" class="empty-state card">
+          <h2>Start with a company search</h2>
+          <p>
+            The dashboard will convert core financial metrics into an analyst-style health review,
+            investment stance, and actionable explanation.
+          </p>
+        </section>
+
+        <section id="analysis-view" class="analysis-view hidden">
+          <div class="overview-grid">
+            <article class="card spotlight">
+              <div class="title-row">
+                <div>
+                  <p class="eyebrow" id="company-ticker">Ticker</p>
+                  <h2 id="company-name">Company Name</h2>
+                </div>
+                <span id="recommendation-badge" class="recommendation-badge">Buy</span>
+              </div>
+              <p id="company-summary" class="summary-text"></p>
+              <div class="meta-grid">
+                <div>
+                  <span class="meta-label">Composite score</span>
+                  <strong id="composite-score">0/100</strong>
+                </div>
+                <div>
+                  <span class="meta-label">Sector</span>
+                  <strong id="sector-name">—</strong>
+                </div>
+                <div>
+                  <span class="meta-label">Market cap</span>
+                  <strong id="market-cap">—</strong>
+                </div>
+                <div>
+                  <span class="meta-label">Valuation view</span>
+                  <strong id="valuation-view">—</strong>
+                </div>
+              </div>
+            </article>
+
+            <article class="card decision-card">
+              <h3>Decision indicator</h3>
+              <div class="gauge-wrap">
+                <div class="gauge">
+                  <div id="gauge-fill" class="gauge-fill"></div>
+                </div>
+                <div class="gauge-labels">
+                  <span>Sell</span>
+                  <span>Hold</span>
+                  <span>Buy</span>
+                </div>
+              </div>
+              <p id="decision-rationale" class="decision-rationale"></p>
+            </article>
+          </div>
+
+          <section class="metrics-grid" id="metrics-grid"></section>
+
+          <section class="two-column-grid">
+            <article class="card">
+              <h3>Analyst assessment</h3>
+              <div id="assessment-list" class="narrative-list"></div>
+            </article>
+            <article class="card">
+              <h3>Investment case</h3>
+              <div class="thesis-columns">
+                <div>
+                  <h4>Reasons to own</h4>
+                  <ul id="bull-list" class="bullet-list"></ul>
+                </div>
+                <div>
+                  <h4>Key risks</h4>
+                  <ul id="risk-list" class="bullet-list"></ul>
+                </div>
+              </div>
+            </article>
+          </section>
+
+          <section class="two-column-grid">
+            <article class="card">
+              <h3>Financial detail</h3>
+              <div id="detail-grid" class="detail-grid"></div>
+            </article>
+            <article class="card">
+              <h3>Methodology</h3>
+              <p>
+                The recommendation blends profitability, growth, leverage, liquidity,
+                free-cash-flow quality, and valuation into a 100-point health score.
+                Strong execution with attractive valuation trends toward <strong>Buy</strong>,
+                balanced profiles map to <strong>Hold</strong>, and weak fundamentals or stressed
+                valuation/risk profiles trend toward <strong>Sell</strong>.
+              </p>
+              <p class="disclaimer">
+                This app is an educational decision-support tool and not personal investment advice.
+              </p>
+            </article>
+          </section>
+        </section>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
